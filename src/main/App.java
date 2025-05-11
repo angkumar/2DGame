@@ -7,7 +7,7 @@ public class App {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("2DGame");
+        window.setTitle("Sigma Game");
 
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
@@ -16,6 +16,8 @@ public class App {
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+
+        gamePanel.startGameThread();
 
 
     }
