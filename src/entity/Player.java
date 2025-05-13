@@ -44,7 +44,10 @@ public class Player extends entity{
         }
     }
     public void update() {
-        if(keyH.upPressed == true) {
+
+        if(keyH.upPressed == true || keyH.downPressed == true || 
+            keyH.leftPressed == true || keyH.rightPressed == true) {
+                if(keyH.upPressed == true) {
             direction = "up";
             y -= speed;
         } 
@@ -60,6 +63,19 @@ public class Player extends entity{
             direction = "right";
             x += speed;
         }
+
+        spriteCounter++;
+        if(spriteCounter > 12) {
+            if(spriteNum == 1) {
+                spriteNum = 2;
+            } else if (spriteNum == 2) {
+                spriteNum = 1;
+            }
+            spriteCounter = 0;
+        }
+            }
+
+        
     }
     public void draw(Graphics2D g2) {
         // g2.setColor(Color.white);
@@ -69,16 +85,36 @@ public class Player extends entity{
 
         switch(direction) {
             case "up":
-                image = up1;
+                if(spriteNum == 1) {
+                    image = up1;
+                }
+                if(spriteNum == 2) {
+                    image = up2;
+                }
                 break;
             case "down":
-                image = down1;
+                if(spriteNum == 1) {
+                    image = down1;
+                }
+                if(spriteNum == 2) {
+                    image = down2;
+                }
                 break;
             case "left":
-                image = left1;
+                if(spriteNum == 1) {
+                    image = left1;
+                }
+                if(spriteNum == 2) {
+                    image = left2;
+                }
                 break;
             case "right":
-                image = right1;
+                if(spriteNum == 1) {
+                    image = right1;
+                }
+                if(spriteNum == 2) {
+                    image = right2;
+                }
                 break;
         }
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
